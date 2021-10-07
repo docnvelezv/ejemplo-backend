@@ -8,7 +8,7 @@ var UsuarioSchema = Schema({
     nombre: String,
     apellidos: String,
     email: String,
-    passwod: String,
+    password: String,
 });
 
 module.exports = moongose.model('usuarios');
