@@ -26,12 +26,7 @@ function validarTokenDeUsuario(req, resp, nextStep){
     try{
         var payload = jwt.decode(tokenEnviado, secret);
 
-        if( moment().unix() >= payload.exp ){
-            resp.status(403).send({message:"Token Expiró"});
-        }
-        else{
-            nextStep();
-        }
+        nextStep();
     }
     catch(ex){
         resp.status(403).send({message:"Token Inválido"});
