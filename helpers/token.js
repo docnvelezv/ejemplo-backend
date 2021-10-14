@@ -12,7 +12,7 @@ function obtenerTokenDeUsuario(usuario){
         name: usuario.nombre,
         email: usuario.email,
         iat: moment().unix(),
-        exp: moment().add(20, 'seconds').unix()
+        exp: moment().add(24, 'hours').unix()
     }
 
     return jwt.encode(payload, secret);
@@ -25,7 +25,7 @@ function validarTokenDeUsuario(req, resp, nextStep){
 
     try{
         var payload = jwt.decode(tokenEnviado, secret);
-
+        req.headers.userId = payload.sub;
         nextStep();
     }
     catch(ex){

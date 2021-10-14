@@ -16,7 +16,6 @@ function registrarUsuario(req, resp){
     nuevoUsuario.nombre = parametros.nombre;
     nuevoUsuario.apellidos = parametros.apellidos;
     nuevoUsuario.email = parametros.email;
-    nuevoUsuario.password = parametros.password;
     
     bcrypt.hash(parametros.password, null, null, function(err, hash){
         nuevoUsuario.password = hash;
