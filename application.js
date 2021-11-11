@@ -4,6 +4,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var routesauth = require('./routes/auth');
 var routescontacts = require('./routes/contacts');
+var routesfiles = require('./routes/file');
+
 
 var application = express();
 
@@ -12,9 +14,15 @@ application.use(bodyParser.json());
 
 application.use('/api', routesauth);
 application.use('/api', routescontacts);
+application.use(routesfiles);
 
 application.get('/health-check', function(req, resp){
     resp.status(200).send({mensaje:"OK"});
 });
+
+
+
+
+
 
 module.exports = application;
