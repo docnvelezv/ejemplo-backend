@@ -1,7 +1,13 @@
 'use strict'
 
 function subirImagen(req, resp){
-    resp.status(200).send({fileUploaded: req.file.filename});
+    console.log(req.body);
+    resp.status(200).send(
+        {fileUploaded: req.file.filename, 
+        longitud: req.body.longitud, 
+        latitud: req.body.latitud, 
+        altitud: req.body.altitud}
+        );
 }
 
 function retornarImagen(req, resp){
